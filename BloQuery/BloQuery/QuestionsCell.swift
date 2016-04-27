@@ -9,6 +9,7 @@
 
 class QuestionsCell: UITableViewCell {
     
-  
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var imageVIew: UIImageView!
 
 }
