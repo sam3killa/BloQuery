@@ -41,7 +41,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func fetchProfile() {
     
-        print("Fetch Profile")
+//        print("Fetch Profile")
         
         // Getting the email of the user
         let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
@@ -49,7 +49,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // Error Handling
             if error != nil {
-                print(error)
+//                print(error)
                 return
             }
             
@@ -57,13 +57,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let email = result["email"] as? String {
                 self.myRootRef.setValue(email)
 
-                print(email)
+//                print(email)
             }
             
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
                     print(url)
             }
-            print(result)
+//            print(result)
         }
     
     }
@@ -74,6 +74,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("Completed Login")
         fetchProfile()
+        
+        self.performSegueWithIdentifier("homeScreenSegue", sender: self)
+        
     }
     
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
