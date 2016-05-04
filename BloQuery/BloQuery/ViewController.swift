@@ -9,9 +9,19 @@
 import UIKit
 import Firebase
 
+let myRootRef = Firebase(url:"https://fiery-heat-7937.firebaseio.com")
+
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    let myRootRef = Firebase(url:"https://fiery-heat-7937.firebaseio.com")
+//    let myRootRef = Firebase(url:"https://fiery-heat-7937.firebaseio.com")
+
+    // User Dictionary
+    var user = [
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "pictureURL": ""
+    ]
     
     // Create an immutable login button with email read permission
     let loginButton: FBSDKLoginButton = {
@@ -40,8 +50,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func fetchProfile() {
-    
-//        print("Fetch Profile")
         
         // Getting the email of the user
         let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
@@ -55,15 +63,30 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // Unwrap email value
             if let email = result["email"] as? String {
-                self.myRootRef.setValue(email)
+                self.user["email"] = email
+                myRootRef.setValue(email)
 
-//                print(email)
+            }
+            
+            if let first_name = result["first_name"] as? String {
+                self.user["firstName"] = first_name
+            }
+            
+            if let last_name = result["first_name"] as? String {
+                self.user["lastName"] = last_name
             }
             
             if let picture = result["picture"] as? NSDictionary, data = picture["data"] as? NSDictionary, url = data["url"] as? String {
+                self.user["pictureURL"] = url
                     print(url)
             }
-//            print(result)
+            
+            var usersRef = myRootRef.childByAppendingPath("users")
+            
+            usersRef.setValue(self.user)
+
+            print(self.user)
+            print(result)
         }
     
     }

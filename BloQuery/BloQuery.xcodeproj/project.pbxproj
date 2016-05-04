@@ -11,11 +11,14 @@
 		8A12ACEE1CCACE1900F0A9A6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12ACED1CCACE1900F0A9A6 /* FBSDKLoginKit.framework */; };
 		8A53FFCE1CCDBC4F003C513F /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFCD1CCDBC4F003C513F /* HomeScreenViewController.swift */; };
 		8A53FFD01CCDC75C003C513F /* QuestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53FFCF1CCDC75C003C513F /* QuestionsCell.swift */; };
+		8A654E2B1CDA82410036A6B6 /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A654E2A1CDA82410036A6B6 /* QuestionDetailViewController.swift */; };
 		8A7F52B31CC9DEEC006137BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F52B21CC9DEEC006137BE /* AppDelegate.swift */; };
 		8A7F52B51CC9DEEC006137BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F52B41CC9DEEC006137BE /* ViewController.swift */; };
 		8A7F52B81CC9DEEC006137BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7F52B61CC9DEEC006137BE /* Main.storyboard */; };
 		8A7F52BA1CC9DEEC006137BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A7F52B91CC9DEEC006137BE /* Assets.xcassets */; };
 		8A7F52BD1CC9DEEC006137BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7F52BB1CC9DEEC006137BE /* LaunchScreen.storyboard */; };
+		8AAA74E51CD184EE002528E2 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA74E41CD184EE002528E2 /* Questions.swift */; };
+		8ADD8AA91CD3197B002DF719 /* QuestionCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD8AA81CD3197B002DF719 /* QuestionCreationViewController.swift */; };
 		E699466E6C6152DC520DCD81 /* Pods_BloQuery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1287E040A70B0A7A67DA39D /* Pods_BloQuery.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,7 @@
 		8A12ACEF1CCACE9900F0A9A6 /* BloQuery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BloQuery-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A53FFCD1CCDBC4F003C513F /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		8A53FFCF1CCDC75C003C513F /* QuestionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsCell.swift; sourceTree = "<group>"; };
+		8A654E2A1CDA82410036A6B6 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
 		8A7F52AF1CC9DEEC006137BE /* BloQuery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloQuery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7F52B21CC9DEEC006137BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A7F52B41CC9DEEC006137BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +36,8 @@
 		8A7F52B91CC9DEEC006137BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A7F52BC1CC9DEEC006137BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A7F52BE1CC9DEEC006137BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AAA74E41CD184EE002528E2 /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		8ADD8AA81CD3197B002DF719 /* QuestionCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCreationViewController.swift; sourceTree = "<group>"; };
 		B5F00BCFB90F92BE963AB525 /* Pods-BloQuery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloQuery.release.xcconfig"; path = "Pods/Target Support Files/Pods-BloQuery/Pods-BloQuery.release.xcconfig"; sourceTree = "<group>"; };
 		C1287E040A70B0A7A67DA39D /* Pods_BloQuery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BloQuery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEDEA3DDBB61C8310D07D20F /* Pods-BloQuery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloQuery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BloQuery/Pods-BloQuery.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,8 +100,11 @@
 				8A7F52B21CC9DEEC006137BE /* AppDelegate.swift */,
 				8A7F52B41CC9DEEC006137BE /* ViewController.swift */,
 				8A53FFCD1CCDBC4F003C513F /* HomeScreenViewController.swift */,
+				8AAA74E41CD184EE002528E2 /* Questions.swift */,
 				8A53FFCF1CCDC75C003C513F /* QuestionsCell.swift */,
 				8A7F52B61CC9DEEC006137BE /* Main.storyboard */,
+				8A654E2A1CDA82410036A6B6 /* QuestionDetailViewController.swift */,
+				8ADD8AA81CD3197B002DF719 /* QuestionCreationViewController.swift */,
 				8A7F52B91CC9DEEC006137BE /* Assets.xcassets */,
 				8A7F52BB1CC9DEEC006137BE /* LaunchScreen.storyboard */,
 				8A7F52BE1CC9DEEC006137BE /* Info.plist */,
@@ -229,6 +238,9 @@
 				8A7F52B51CC9DEEC006137BE /* ViewController.swift in Sources */,
 				8A53FFD01CCDC75C003C513F /* QuestionsCell.swift in Sources */,
 				8A7F52B31CC9DEEC006137BE /* AppDelegate.swift in Sources */,
+				8A654E2B1CDA82410036A6B6 /* QuestionDetailViewController.swift in Sources */,
+				8ADD8AA91CD3197B002DF719 /* QuestionCreationViewController.swift in Sources */,
+				8AAA74E51CD184EE002528E2 /* Questions.swift in Sources */,
 				8A53FFCE1CCDBC4F003C513F /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
