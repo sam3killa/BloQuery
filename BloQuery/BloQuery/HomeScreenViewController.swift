@@ -8,13 +8,14 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 class HomeScreenViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 
     // These will all need to be Question Objects later
-    var newQuestions:[String] = []
+    var newQuestions:[Firebase] = []
     var questionTitle = ""
     
     override func viewDidLoad() {
@@ -22,20 +23,15 @@ class HomeScreenViewController: UIViewController , UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
                 
-        myRootRef.observeEventType(.Value, withBlock: { snapshot in
-            
-            var questionData = snapshot.value.objectForKey("questions")!
-            
-            // Retrieve Items
-            print(questionData)
+        myRootRef.childByAppendingPath("questions").observeEventType(.Value, withBlock: { snapshot in
             
             // Clear array
             self.newQuestions = []
 
-            for item in questionData as! NSDictionary {
+            for item in snapshot.children {
                 
                 // Add question from database to newQuestions array
-                self.newQuestions.append(item.1 as! String)
+                self.newQuestions.append(item as! Firebase)
                 
             }
             
@@ -64,6 +60,7 @@ class HomeScreenViewController: UIViewController , UITableViewDelegate, UITableV
             var viewController = segue.destinationViewController as! QuestionDetailViewController
             viewController.passedQuestion = questionTitle
             print("Passing Question Information")
+            
         
         }
     }
@@ -77,7 +74,7 @@ class HomeScreenViewController: UIViewController , UITableViewDelegate, UITableV
         
         let cell = tableView .dequeueReusableCellWithIdentifier("QuestionsCell", forIndexPath: indexPath) as! QuestionsCell
         
-        cell.questionLabel.text = self.newQuestions[indexPath.row] as! String
+//        cell.questionLabel.text = self.newQuestions[indexPath.row] as! Firebase
         
         return cell
         

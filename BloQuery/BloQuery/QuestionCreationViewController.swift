@@ -29,7 +29,13 @@ class QuestionCreationViewController: UIViewController {
         let questionRef = myRootRef.childByAppendingPath("questions")
         let newQuestionsRef = questionRef.childByAutoId()
         
-        newQuestionsRef.setValue(questionText)
+        let userid = NSUserDefaults.standardUserDefaults().stringForKey("uid")
+        
+        // Return a UID of the user
+        let payLoad = ["text": questionText! ,"user": userid!]
+        
+        // Create a Dictionary
+        newQuestionsRef.setValue(payLoad)
         
         let alert = UIAlertController(title: "Question Submitted!", message: "You have asked a question to the world", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default, handler: nil))
@@ -44,6 +50,7 @@ class QuestionCreationViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
     /*
     // MARK: - Navigation
 

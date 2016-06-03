@@ -45,7 +45,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         // Store the access token
         if let token = FBSDKAccessToken.currentAccessToken() {
-            fetchProfile()
         }
     }
     
@@ -72,7 +71,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.user["firstName"] = first_name
             }
             
-            if let last_name = result["first_name"] as? String {
+            if let last_name = result["last_name"] as? String {
                 self.user["lastName"] = last_name
             }
             
@@ -81,9 +80,51 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print(url)
             }
             
-            var usersRef = myRootRef.childByAppendingPath("users")
+            let usersRef = myRootRef.childByAppendingPath("users")
             
-            usersRef.setValue(self.user)
+            myRootRef.authWithOAuthProvider("facebook", token: FBSDKAccessToken.currentAccessToken().tokenString, withCompletionBlock: { (error, authData) in
+                
+                // Storing info to a user dictionary
+                if let error = error {
+                
+                    print(error.localizedDescription)
+                    
+                }
+                
+                let userDictionary = ["provider": authData.provider, "email": self.user["email"], "first_name":self.user["firstName"], "last_name":self.user["lastName"], "picture":self.user["pictureURL"]]
+                
+                let usersReference = usersRef.childByAppendingPath(authData.uid)
+                usersReference.setValue(userDictionary)
+                
+                NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
+                
+                self.performSegueWithIdentifier("homeScreenSegue", sender: self)
+
+            })
+            
+            // Get AccessToken from facebook
+            // Call AuthWithOAuthProvider
+            // Add the userID and provider into my user dictionary
+            // Store ID into UserDefaults
+            // Get the userID and put it into the create question
+            
+            
+            //    NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+            //    [dataService.rootRef authWithOAuthProvider:@"facebook" token:accessToken withCompletionBlock:^(NSError error, FAuthData authData) {
+            //    if (error) {
+            //    NSLog(@"Login failed. %@", error);
+            //    } else {
+            //    NSLog(@"Logged in! %@", authData);
+            //
+            //    NSDictionary *user = @{@"provider" : authData.provider, @"TestProp" : @"cool"};
+            //    [dataService createFirebaseUser:authData.uid user:user];
+            //
+            //    [[NSUserDefaults standardUserDefaults]setObject:authData.uid forKey:KEY_UID];
+            //    [self performSegueWithIdentifier:SEGUE_LOGGED_IN sender:nil];
+            //    }
+            //    }];                                        }
+            
+//            usersRef.setValue(self.user)
 
             print(self.user)
             print(result)
@@ -92,20 +133,19 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     // Implement required methods that follow the Login Button Delegate Protocol
-    
+
     // User successfully logged in
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("Completed Login")
         fetchProfile()
         
-        self.performSegueWithIdentifier("homeScreenSegue", sender: self)
         
     }
-    
+
     func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
         return true
     }
-    
+
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
     }

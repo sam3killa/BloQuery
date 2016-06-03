@@ -1,23 +1,19 @@
 //
-//  QuestionDetailViewController.swift
+//  WriteAnswerViewController.swift
 //  BloQuery
 //
-//  Created by Samuel Shih on 5/4/16.
+//  Created by Samuel Shih on 5/5/16.
 //  Copyright © 2016 Samuel Shih. All rights reserved.
 //
 
 import UIKit
 
-class QuestionDetailViewController: UIViewController {
-    
-    var passedQuestion = ""
+class WriteAnswerViewController: UIViewController {
 
-    @IBOutlet weak var questionLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        questionLabel.text = passedQuestion
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,14 +21,17 @@ class QuestionDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func answerQuestionButtonPressed(sender: AnyObject) {
-        
-        print("Take user to a write answer view controller")
-    }
-
     @IBAction func doneButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
 
+    }
+
+    @IBAction func submitAnswerPressed(sender: AnyObject) {
+        
+        // Adds whatever is in the textbox, as a child of question?
+        let questionRef = myRootRef.childByAppendingPath("questions")
+        let newQuestionsRef = questionRef.childByAutoId()
+        
     }
     /*
     // MARK: - Navigation
